@@ -1,0 +1,17 @@
+﻿<Window x:Class="DispatcherDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DispatcherDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <StackPanel>
+            <Button Name="btnLong" Click="btnLong_Click" Background="DarkSeaGreen" Width="200" HorizontalAlignment="Center">Start a long running task</Button>
+            <TextBox Name="txtInfo" Background="Salmon">Task not started yet</TextBox>
+            <Button Name="btnCurrent" Click="btnCurrent_Click" Background="CadetBlue" Width="200" HorizontalAlignment="Center">Do other tasks</Button>
+            <TextBox Name="txtCurrent" Background="Moccasin">Result of other tasks</TextBox>
+        </StackPanel>
+    </Grid>
+</Window>
