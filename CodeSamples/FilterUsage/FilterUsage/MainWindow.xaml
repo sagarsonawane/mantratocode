@@ -1,0 +1,41 @@
+﻿<Window x:Class="FilterUsage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://prismlibrary.com/"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="MainWindow" Height="450" Width="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger>
+            <i:InvokeCommandAction Command="{Binding WindowLoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <StackPanel Width="300" HorizontalAlignment="Center">
+            <TextBox x:Name="txtSearch" Text="{Binding SearchCriteria, UpdateSourceTrigger=PropertyChanged}" TabIndex="0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding SearchTextChangedCommand}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding SearchLostFocusCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+
+            <ListView x:Name="listViewStation"
+                ItemsSource="{Binding StationList}"
+                      DisplayMemberPath="StationName"
+                      SelectedValue="{Binding SelectedStation}" TabIndex="1">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding ListViewLostFocusCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>
